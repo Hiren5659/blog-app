@@ -1,0 +1,40 @@
+
+<table class="table table-striped table-borderless table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Tittle</th>
+      <th scope="col">Published</th>
+        <% if user_signed_in? == false or current_user.admin == true %>
+      <th scope="col">Publisher</th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if user_signed_in? %>
+      <% @posts.each do |post| %>
+        <% if post.user == current_user or current_user.admin == true %>
+          <tr>
+            <td><%= link_to post.tittle.capitalize, post %></td>
+            <td><%= post.created_at.strftime("%d-%^b-%Y  ")%></td>
+            <% if post.user != current_user or current_user.admin == true %>
+              <td><%= post.user.email.split('@')[0].capitalize%></td> 
+            <%end%>      
+          </tr>
+        <% end %>
+      <% end %>
+    <%else%>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= link_to post.tittle.capitalize, post %></td>
+          <td><%= post.created_at.strftime("%d-%^b-%Y  ")%></td>
+          <td><%= post.user.email.split('@')[0].capitalize%></td>    
+        </tr>
+      <% end %>
+    <%end%>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Post', new_post_path, class:'btn btn-secondary' %>

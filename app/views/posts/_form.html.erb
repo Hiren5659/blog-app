@@ -1,0 +1,34 @@
+<%= form_with(model: post, local: true) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
+  <div class="field form-group">
+    <%= form.label :tittle %>
+    <%= form.text_field :tittle, class:'form-control'%>
+  </div>
+  <div class="field form-group">
+    <%= form.label :contant %>
+    <%= form.text_area :contant , class:'editable medium-editor-textarea postcontent form-control'%>
+  </div>
+
+ 
+  <div class="field"> 
+    <%= form.number_field :user_id, id: :post_user_id, value: current_user.id, type: :hidden%>
+  </div> 
+
+  <div class="actions">
+    <%= form.submit class:'btn btn-secondary' %>
+  </div>
+  <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+<script>var editor = new MediumEditor('.editable');</script>
+<% end %>

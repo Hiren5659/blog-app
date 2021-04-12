@@ -1,0 +1,13 @@
+<div class="jumbotron">
+  <h1 class="display-3"><%= @post.tittle %></h1>
+  By: <%= @post.user.email.split('@')[0].capitalize%><br>
+  Published: <%= @post.created_at.strftime("%d-%^b-%Y  ")%>
+  <p class="lead"><%= @post.contant.html_safe%></p>
+  <hr class="my-4">
+  <% if user_signed_in? %>
+  <%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-secondary' %>
+  <%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'%>
+  <%end%>
+<%= link_to 'Back', posts_path, class: 'btn btn-secondary'%>
+</div>
+

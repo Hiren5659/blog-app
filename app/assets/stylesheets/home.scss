@@ -1,0 +1,25 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+// .btn-secondary{
+//     background-color: white;
+// }
+.btn{
+    background-color: white;
+    color: gray ;
+}
+user{
+    float: right;
+    color: white;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.foot{
+    height: auto;
+    text-align: center;
+    background-color:#333a40;
+    color: white;
+    width:100%;
+    padding:1rem 0;
+}
